@@ -1,20 +1,38 @@
 {
   "name": "server",
-  "module": "index.ts",
+  "version": "1.0.0",
+  "description": "",
   "type": "module",
+  "main": "index.js",
   "scripts": {
-    "seed": "bun prisma/seed.ts"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "bun prisma/seed.ts",
+    "build": "rimraf dist && bun run tsc",
+    "start": "bun run build && node dist/index.js",
+    "dev": "bun run build && concurrently \"bun run tsc -w\" \"nodemon --exec bun run src/index.ts\""
   },
-  "devDependencies": {
-    "@types/bun": "^1.1.6",
-    "@types/node": "^22.2.0",
-    "ts-node": "^10.9.2"
-  },
-  "peerDependencies": {
-    "typescript": "^5.5.4"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.18.0",
-    "prisma": "^5.18.0"
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "prisma": "^5.18.0",
+    "rimraf": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.14.15",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }
